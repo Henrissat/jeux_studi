@@ -10,7 +10,7 @@
   
 body, html{
     font-weight: normal;
-    background: linear-gradient(rgb(26, 228, 167), rgb(16, 58, 138) )no-repeat center center fixed;
+    background: linear-gradient(rgb(103, 221, 211), rgb(49, 207, 207) )no-repeat center center fixed;
     background-size: cover;
 }
 .game{
@@ -20,7 +20,7 @@ body, html{
     height: 800px;
     margin: 0 auto;
     margin-top: 2rem;
-    background-color: #fff;
+    background-color: #f0ffff;
     border-radius: 10px;
     z-index: 0;
 }
@@ -36,7 +36,8 @@ body, html{
 }
 #player1-container{
     grid-column: 1;
-    background-color: rgb(238, 242, 245);
+    /*background-color: rgb(238, 242, 245);*/
+    background : linear-gradient(rgb(255, 153, 135), rgb(246, 83, 77));
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     text-align: center;
@@ -51,6 +52,13 @@ body, html{
     font-size: 1.2rem;
     margin-top: 2rem;
     text-transform: uppercase;
+}
+#roll{
+    margin-top: 10rem;
+    background-color: #fff;
+    width: 130px;
+    height: 130px;
+    border-radius: 10px;
 }
 #rollDice{
     font-size: 1.2rem;
