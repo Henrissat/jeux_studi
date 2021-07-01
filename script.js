@@ -3,16 +3,9 @@
 //const roll = document.getElementById('#roll'){};
 
 
-//fonction qui génère un nombre entre 1 et 6
-const rollDice = function(){
-  const numberRandom = Math.floor(Math.random() * 6) + 1
-  return numberRandom
-}
-const result = rollDice()
 
 
-
-//créer l'objet dé avec canvas et l'animer
+/*créer l'objet dé avec canvas et l'animer
 var canvas, ctx;
 var diceColor = '#fff'
 var pointColor = 'crimson'
@@ -22,9 +15,35 @@ const ctx = canvas.getContext('2D')
 canvas.width = 500
 canvas.height = 500
 
-drawDice
+drawDice*/
 
+var dice = document.getElementById('dice');
+var rollDiceBtn = document.getElementById('rollDiceBtn');
+var currentClass = '';
 
+//fonction qui génère un nombre entre 1 et 6
+const rollDiceRand = function(){
+  const numberRandom = Math.floor(Math.random() * 6) + 1
+  return numberRandom
+}
+const result = rollDiceRand()
+
+//fonction pour faire apparaitre la face en fonction de rollDiceRand
+function rollDice() {
+ var randNum = rollDiceRand(1,7)
+  /*console.log(randNum)*/
+  var showClass = 'show-' + randNum;
+ /*console.log(showClass)*/
+  if ( currentClass ) {
+    dice.classList.remove( currentClass );
+  }
+  dice.classList.add( showClass );
+  currentClass = showClass;
+}
+// initialize
+rollDice();
+
+rollDiceBtn.addEventListener("click", rollDice);
 
 
 
