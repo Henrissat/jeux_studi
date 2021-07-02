@@ -1,3 +1,65 @@
+var dice = document.getElementById('dice')
+var rollDiceBtn = document.getElementById('rollDiceBtn')
+var currentClass = ''
+var playerActive, scores, roundScore 
+
+playerActive = 0;
+scores = [0, 0];
+roundScore = 0;
+
+/*newGame();
+document.getElementById("newGame").addEventListener("click", newGame);
+function newGame{}*/
+
+/* JOUEUR 1 */
+/*  Initialiser le score  */ 
+let scoreTotal1 = document.getElementById('scoreTotal-1')
+scoreTotal1.innerText = 0
+
+let roundScore1 = document.getElementById('roundScore-1')
+roundScore1.innerText = 0
+
+
+//fonction au clic pour faire apparaitre la face en fonction de rollDiceRand
+
+rollDiceBtn.addEventListener("click", ()=>{
+  //fonction qui génère un nombre entre 1 et 6
+  var rollDiceRand = Math.floor(Math.random() * 6) + 1
+  
+  var randNum = rollDiceRand;
+  roundScore1.textContent = randNum
+
+  //faire apparaitre la face correspondant au randNum
+  var showClass = 'show-' + randNum
+  if ( currentClass ) {
+    dice.classList.remove( currentClass )
+  }
+  dice.classList.add( showClass )
+  currentClass = showClass
+
+  // stocker le score ou Game Over
+  if (rollDiceRand >= 2) {
+    roundScore += rollDiceRand
+    document.getElementById('roundScore-'+ playerActive).innerText = roundScore
+  } else if {
+    document.getElementById('roundScore-'+ playerActive).innerText = "Ooops"
+    nextPlayer();
+  } else {
+    document.getElementById('roundScore-'+ playerActive).innerText = "Erreur"
+  }
+}) 
+
+function nextPlayer(){
+
+
+}
+
+console.log()
+/*while (resultDice >= 2){
+  roundScore1 = roundScore1 + resultDice
+}*/
+
+
 //créer mon dé
 //visuel du dé de 6
 //const roll = document.getElementById('#roll'){};
@@ -13,66 +75,6 @@ canvas.width = 500
 canvas.height = 500
 
 drawDice*/
-
-
-var dice = document.getElementById('dice')
-var rollDiceBtn = document.getElementById('rollDiceBtn')
-var currentClass = ''
-
-/* JOUEUR 1 */
-/*  Initialiser le score  */ 
-let scoreTotal1 = document.getElementById('scoreTotal1')
-scoreTotal1.innerText = 0
-
-let roundScore1 = document.getElementById('roundScore1')
-roundScore1.innerText = 0
-
-
-
-//fonction qui génère un nombre entre 1 et 6
-const rollDiceRand = ()=>{
-  const numberRandom = Math.floor(Math.random() * 6) + 1
-  return numberRandom
-}
-
-//fonction pour faire apparaitre la face en fonction de rollDiceRand
-var randNum;
-function rollDice(){
-  randNum = rollDiceRand()
-  //console.log(randNum)
-  roundScore1.textContent = randNum
-  var showClass = 'show-' + randNum
-  //console.log(showClass)
-  if ( currentClass ) {
-    dice.classList.remove( currentClass )
-  }
-  dice.classList.add( showClass )
-  currentClass = showClass
-  return randNum
-}
-rollDice()
-let resultDice = rollDiceRand()
-
-rollDiceBtn.addEventListener("click", rollDice)
-
-
-
-/*  stocker le score ou Game Over */ 
-function gameOver(){
-  if (randNum >= 2) {
-    roundScore1 = roundScore1 + randNum
-  } else if (randNum == 1 ) {
-    roundScore1 = 0
-  } else {
-
-  }
-}
-console.log()
-
-/*while (resultDice >= 2){
-  roundScore1 = roundScore1 + resultDice
-}*/
-
 
 /*Afficher le dé graphique correspondant à RollDice
 switch (result) {
