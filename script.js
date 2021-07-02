@@ -2,9 +2,6 @@
 //visuel du dé de 6
 //const roll = document.getElementById('#roll'){};
 
-
-
-
 /*créer l'objet dé avec canvas et l'animer
 var canvas, ctx;
 var diceColor = '#fff'
@@ -17,37 +14,67 @@ canvas.height = 500
 
 drawDice*/
 
-var dice = document.getElementById('dice');
-var rollDiceBtn = document.getElementById('rollDiceBtn');
-var currentClass = '';
+
+var dice = document.getElementById('dice')
+var rollDiceBtn = document.getElementById('rollDiceBtn')
+var currentClass = ''
+
+/* JOUEUR 1 */
+/*  Initialiser le score  */ 
+let scoreTotal1 = document.getElementById('scoreTotal1')
+scoreTotal1.innerText = 0
+
+let roundScore1 = document.getElementById('roundScore1')
+roundScore1.innerText = 0
+
+
 
 //fonction qui génère un nombre entre 1 et 6
-const rollDiceRand = function(){
+const rollDiceRand = ()=>{
   const numberRandom = Math.floor(Math.random() * 6) + 1
   return numberRandom
 }
-const result = rollDiceRand()
 
 //fonction pour faire apparaitre la face en fonction de rollDiceRand
-function rollDice() {
- var randNum = rollDiceRand(1,7)
-  /*console.log(randNum)*/
-  var showClass = 'show-' + randNum;
- /*console.log(showClass)*/
+var randNum;
+function rollDice(){
+  randNum = rollDiceRand()
+  //console.log(randNum)
+  roundScore1.textContent = randNum
+  var showClass = 'show-' + randNum
+  //console.log(showClass)
   if ( currentClass ) {
-    dice.classList.remove( currentClass );
+    dice.classList.remove( currentClass )
   }
-  dice.classList.add( showClass );
-  currentClass = showClass;
+  dice.classList.add( showClass )
+  currentClass = showClass
+  return randNum
 }
-// initialize
-rollDice();
+rollDice()
+let resultDice = rollDiceRand()
 
-rollDiceBtn.addEventListener("click", rollDice);
+rollDiceBtn.addEventListener("click", rollDice)
 
 
 
-//Afficher le dé graphique correspondant à RollDice
+/*  stocker le score ou Game Over */ 
+function gameOver(){
+  if (randNum >= 2) {
+    roundScore1 = roundScore1 + randNum
+  } else if (randNum == 1 ) {
+    roundScore1 = 0
+  } else {
+
+  }
+}
+console.log()
+
+/*while (resultDice >= 2){
+  roundScore1 = roundScore1 + resultDice
+}*/
+
+
+/*Afficher le dé graphique correspondant à RollDice
 switch (result) {
 case 1:
   console.log('afficher le dés de 1');
@@ -69,8 +96,4 @@ case 6:
   break;
 default:
   console.log(`Sorry, we are out of ${result}.`);
-}
-
-
-
-console.log(result)
+}*/
