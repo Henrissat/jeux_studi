@@ -14,8 +14,10 @@
   </head>
   <body>
     <container class='game'>
-        <div class="center-control" id="newGame">New game</div>
+        <button class="center-control" id="newGame">
+          <div class="btn effectBtn"  data-sm-link-text="newGame"><span>New game</span></div></button>
         <div class="scene">
+          <!--  ---- Création du dés ----   -->
           <div class="center-control" id="dice">
             <div class="dice_face dice_face-1">1</div>
             <div class="dice_face dice_face-2">2</div>
@@ -28,19 +30,23 @@
         <button id="rollDiceBtn" class="center-control">
           <div class="btn effectBtn" data-sm-link-text="Roll Dice" target="_blank"><span>Roll Dice</span></div>
         </button>
-        <div class="center-control" id="hold">Hold</div>
+        <button id="holdBtn" class="center-control">
+          <div class="btn effectBtn"  data-sm-link-text="Hold"  target="_blank"><span>Hold</span></div>
+        </button>
         <div id="container-player">
-            <div id="player1-container" class="current-player">
+          <!--  ---- Joueur 1 ----   -->
+            <div id="player-0-container" class="current-player">
                 <div id="player-name">player 1</div>
                 <div id="turn"></div>
-                <div id="scoreTotal-1">43</div>
-                <div id="roundScore-1"></div>
+                <div id="scoreTotal-0">43</div>
+                <div id="roundScore-0"></div>
             </div>
-            <div id="player2-container">
+          <!--  ---- Joueur 2 ----   -->
+            <div id="player-1-container">
                 <div id="player-name">player 2</div>
                 <div id="turn"></div>
-                <div id="scoreTotal-2">72</div>
-                <div id="roundScore-2">2</div>
+                <div id="scoreTotal-1">72</div>
+                <div id="roundScore-1">2</div>
             </div>
         </div> 
     </container>

@@ -36,7 +36,7 @@ body, html{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
-#player1-container{
+#player-0-container{
     grid-column: 1;
     /*background-color: rgb(238, 242, 245);*/
     background : linear-gradient(rgb(255, 153, 135), rgb(246, 83, 77));
@@ -49,15 +49,10 @@ body, html{
     font-family: 'Staatliches', cursive;
     font-size: 7em;
 }
-#player2-container{
+#player-1-container{
     grid-column: 2;
     text-align: center;
     padding: 1rem;
-}
-#newGame{
-    font-size: 1.2rem;
-    margin-top: 2rem;
-    text-transform: uppercase;
 }
 .scene{
     position: absolute;
@@ -164,9 +159,29 @@ buttons{
     text-align: center;
     width: 200px;
 }
+#newGame{
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    left: 43%;
+    width: 200px;
+    max-width: 200px;
+    border-radius: 50px;
+    box-shadow: 3px 3px 3px 1px rgba(54, 54, 54, 0.2);
+    border: 1px solid #fff;
+}
 #rollDiceBtn{
     font-size: 1.2rem;
     margin-top: 24rem;
+    left: 43%;
+    width: 200px;
+    max-width: 200px;
+    border-radius: 50px;
+    box-shadow: 3px 3px 3px 1px rgba(54, 54, 54, 0.2);
+    border: 1px solid #fff;
+}
+#holdBtn{
+    font-size: 1.2rem;
+    margin-top: 28rem;
     left: 43%;
     width: 200px;
     max-width: 200px;
@@ -226,9 +241,4 @@ buttons{
     letter-spacing: 0.05em;
     -webkit-transform: translateY(0) scale(1,1);
             transform: translateY(0) scale(1,1);
-}
-#hold{
-    font-size: 1.2rem;
-    margin-top: 28rem;
-    text-transform: uppercase;
 }
