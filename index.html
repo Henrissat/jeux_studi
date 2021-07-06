@@ -30,12 +30,18 @@
         <button id="rollDiceBtn" class="center-control">
           <div class="btn effectBtn" data-sm-link-text="Roll Dice" target="_blank"><span>Roll Dice</span></div>
         </button>
+        <audio id="rollSong1" src="roll.wav" type="audio/mp3"></audio>
+        <audio id="rollSong2" src="https://sounds-mp3.com/mp3/0004526.mp3" type="audio/mp3"></audio>
+        <audio id="overSong" >
+          <source id="sourceSongLaugh" src="" type="audio/mp3"/>
+          Your browser does not support the audio element.
+        </audio>
         <button id="holdBtn" class="center-control">
           <div class="btn effectBtn"  data-sm-link-text="Hold"  target="_blank"><span>Hold</span></div>
         </button>
         <div id="container-player">
           <!--  ---- Joueur 1 ----   -->
-            <div id="player-0-container" class="current-player">
+            <div id="player-0-container" class="bg-active-player">
                 <div id="player-name">player 1</div>
                 <div id="turn"></div>
                 <div id="scoreTotal-0">43</div>

@@ -36,6 +36,10 @@ roundScore = 0;
 //fonction au clic pour faire apparaitre la face en fonction de rollDiceRand
 
 rollDiceBtn.addEventListener("click", ()=>{
+  //son du dé
+  //songByPlayer()
+  document.getElementById('rollSong1').play()
+  
   //fonction qui génère un nombre entre 1 et 6
   var rollDiceRand = Math.floor(Math.random() * 6) + 1
   var randNum = rollDiceRand;
@@ -54,14 +58,17 @@ rollDiceBtn.addEventListener("click", ()=>{
     document.getElementById('roundScore-'+ playerActive).innerText = roundScore
   } else if(rollDiceRand == 1) {
     roundScore = 0
-    document.getElementById('roundScore-'+ playerActive).innerText = "Ooops"
-    nextPlayer();
+    textGameOver()
+    //son game over
+    getSongOver()
+    //joueur suivant
+    nextPlayer()
   } else {
     document.getElementById('roundScore-'+ playerActive).innerText = "Erreur"
   }
 }) 
 
-/*    Joueur suivant et joueur actif   */
+/*   ----- Joueur suivant et joueur actif -----  */
 playerActive = 0;
 function nextPlayer(){
   if(playerActive === 0){
@@ -71,9 +78,13 @@ function nextPlayer(){
   }
   roundScore = 0
   document.getElementById('roundScore-'+playerActive).innerText = 0
+
+  //Changement du graphisme en fonction du joueur
+  document.getElementById("player-0-container").classList.toggle('bg-active-player');
+  document.getElementById("player-1-container").classList.toggle('bg-active-player');
 }
 
-/*    stocker le score   */
+/*  -----  stocker le score -----  */
 scores = [0, 0];
 holdBtn.addEventListener("click", ()=>{
   scores[playerActive] += roundScore
@@ -88,6 +99,54 @@ function winner(){
     window.alert('YOU WIN')
   }
 }
+
+/*  -----  EFFETS  -----  */
+/*function songByPlayer(){
+  if (playerActive = 0 ){
+    document.getElementById('rollSong1').play()
+  } else {
+    document.getElementById('rollSong2').play()
+  }
+}
+*/
+/*function songByPlayer(){
+  if (playerActive = document.getElementById('player-0-container')){
+    document.getElementById('rollSong1').play()
+  } else if (playerActive = document.getElementById('player-1-container')){
+    document.getElementById('rollSong2').play()
+  }
+}*/
+console.log(playerActive)
+
+
+/*// Son Dés Aléatoire 
+function getSongDice(){
+  var song = ['roll.wav','roll2.mp3']
+  var randomSong = song[Math.floor(Math.random() * song.length)]
+  var player = document.getElementById('rollSong')
+  var sourceSongDice = document.getElementById('sourceSongDice')
+  sourceSongDice.src='' + randomSong + ''
+
+  player.load()
+  player.play()
+}*/
+// Son GameOver Aléatoire 
+function getSongOver(){
+  var song = ['murrayk.wav','laf2.wav','funky.wav']
+  var randomSong = song[Math.floor(Math.random() * song.length)]
+  var player = document.getElementById('overSong')
+  var sourceSongLaugh = document.getElementById('sourceSongLaugh')
+  sourceSongLaugh.src='' + randomSong + ''
+
+  player.load()
+  player.play()
+}
+// Texte Aléatoire
+function textGameOver(){
+  var text = ['Ooops','You loose','AH AH AH suivant']
+  document.getElementById('roundScore-'+ playerActive).innerText = text[Math.floor(Math.random() * text.length)]
+}
+
 
 //créer mon dé
 //visuel du dé de 6
