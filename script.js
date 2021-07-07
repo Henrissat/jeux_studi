@@ -8,13 +8,16 @@ var player2 = document.getElementById('player-1-container')
 var playerActive = document.querySelector('current-player')
 players = [ player1, player2 ]*/
 
+var soundGame = document.getElementById('soundGame')
+soundGame.volume = 0.30
 
 document.getElementById('newGame').addEventListener("click", newGame);
 function newGame(){
-  init();
-  scores = [0, 0];
-  roundScore = 0;
-  playerActive = 0;
+  init()
+  scores = [0, 0]
+  roundScore = 0
+  playerActive = 0
+  newGameSong()
 }
 
 /* JOUEURS */
@@ -30,7 +33,7 @@ function init(){
   let roundScore2 = document.getElementById('roundScore-1')
   roundScore2.innerText = 0
 }
-init();
+init()
 
 roundScore = 0;
 //fonction au clic pour faire apparaitre la face en fonction de rollDiceRand
@@ -89,7 +92,8 @@ scores = [0, 0];
 holdBtn.addEventListener("click", ()=>{
   scores[playerActive] += roundScore
   document.getElementById('scoreTotal-'+playerActive).innerText = scores[playerActive]
-  console.log(scores)
+  //song hold()
+  document.getElementById('holdSong').play()
   winner();
   nextPlayer()
 })
@@ -130,6 +134,7 @@ function getSongDice(){
   player.load()
   player.play()
 }*/
+
 // Son GameOver Aléatoire 
 function getSongOver(){
   var song = ['murrayk.wav','laf2.wav','funky.wav']
@@ -145,6 +150,17 @@ function getSongOver(){
 function textGameOver(){
   var text = ['Ooops','You loose','AH AH AH suivant']
   document.getElementById('roundScore-'+ playerActive).innerText = text[Math.floor(Math.random() * text.length)]
+}
+// Son newGame aléatoire
+function newGameSong(){
+  var song = ['are-you-ready.mp3','are-you-ready-to-go.mp3','are-you-ready-to-win.mp3']
+  var randomSong = song[Math.floor(Math.random() * song.length)]
+  var player = document.getElementById('ngSong')
+  var newGameSongs = document.getElementById('newGameSongs')
+  newGameSongs.src='' + randomSong + ''
+
+  player.load()
+  player.play()
 }
 
 

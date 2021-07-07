@@ -12,8 +12,10 @@ body, html{
     font-family: 'lato', sans-serif;
     color: rgb(109, 109, 109);
     font-weight: normal;
-    background: linear-gradient(rgb(103, 221, 211), rgb(49, 207, 207) )no-repeat center center fixed;
-    background-size: cover;
+}
+body{
+    background: center no-repeat url(images/bg_game.jpg) ;
+    background-position: top;
 }
 .game{
     position: relative;
@@ -21,7 +23,7 @@ body, html{
     width: 80%;
     height: 800px;
     margin: 0 auto;
-    margin-top: 2rem;
+    margin-top: 10rem;
     background-color: #f0ffff;
     border-radius: 10px;
     z-index: 0;
@@ -38,7 +40,6 @@ body, html{
 }
 #player-0-container{
     grid-column: 1;
-    background : linear-gradient(rgb(255, 153, 135), rgb(246, 83, 77));
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     text-align: center;
@@ -66,13 +67,13 @@ h2{
     text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
 }
 h3{
-    margin-top: 0.8rem;a
-    font-size: 1.4rem;
+    margin-top: 0.8rem;
 }
-#roundScoreArea{
+.roundScoreContainer{
+    top: 4rem;
     position: relative;
     margin: 0 auto;
-    width: 200px;
+    width: 300px;
     height: 150px;
     padding: 1.5rem;
     border-radius: 10px;
@@ -80,17 +81,22 @@ h3{
     box-shadow:0px 2px 4px rgba(0, 0, 0, 0.5); ;
 
 }
-#roundScore-1{
-
-}
 .scene{
+    display: flex;/* pour faire bouger le dés dans la scène*/
     position: absolute;
-    left: 42%;
-    top: 20%;
+    left: 43%;
+    top: 24%;
     width: 200px;
     height: 200px;
-    margin: 20px;
+
     perspective:600px;
+}
+.shadowDice{
+    z-index: -10;
+    width:200px;
+    height: 200px;
+    background-color: rgba(44, 44, 44,0.2);
+    -webkit-filter: blur(30px);
 }
 #dice{
     /*margin-top: 10rem;
@@ -186,17 +192,18 @@ buttons{
     flex-wrap: wrap;
     justify-content: center;
     text-align: center;
-    width: 200px;
 }
 #newGame{
-    font-size: 1.2rem;
     margin-top: 2rem;
-    left: 43%;
-    width: 200px;
-    max-width: 200px;
+    left: 45%;
+    width: 150px;
+    height: 40px;
     border-radius: 50px;
     box-shadow: 3px 3px 3px 1px rgba(54, 54, 54, 0.2);
     border: 1px solid #fff;
+}
+#newGame span{
+    font-size: 0.7rem !important;
 }
 #rollDiceBtn{
     font-size: 1.2rem;
@@ -274,10 +281,36 @@ buttons{
 
 
 /* ----- Bg change en fonction de joueur actif  ----- */
+[id|=player] {
+    text-align: center;
+}
+h3[id|=roundScore] {
+    font-size: 1.3rem;
+    font-weight: 400;
+}
 
+.bg-active-player{
+    background : linear-gradient(rgb(255, 153, 135), rgb(246, 83, 77));
+}
+.bg-active-player > .roundScoreContainer > [id^="roundScore"]{
+    font-size: 1.6em;
+    font-weight: 600;
+    color: rgba(235, 125, 111, 1);
+}
+.bg-active-player > h3{
+    color: #000;
+}
 .bg-active-player > #scoreTotal-0{
+    color: #fff;
     text-shadow: 0px 3px 7px rgba(0, 0, 0, 0.18);
 }
 .bg-active-player > #scoreTotal-1{
+    color: #fff;
     text-shadow: 0px 3px 7px rgba(0, 0, 0, 0.18);
 }
+.bg-active-player > #roundScore{
+    color: #fff;
+    text-shadow: 0px 3px 7px rgba(0, 0, 0, 0.18);
+}
+
+

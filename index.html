@@ -14,8 +14,16 @@
   </head>
   <body>
     <container class='game'>
+        <audio autoplay id="soundGame" src="on-hells-horizon.mp3" type="audio/mp3"></audio>
         <button class="center-control" id="newGame">
-          <div class="btn effectBtn"  data-sm-link-text="newGame"><span>New game</span></div></button>
+          <audio id="ngSong" >
+            <source id="newGameSongs" src="" type="audio/mp3"/>
+            Your browser does not support the audio element.
+          </audio>
+          <div class="btn effectBtn"  data-sm-link-text="newGame">
+            <span>New game</span>
+          </div>
+        </button>
         <div class="scene">
           <!--  ---- Création du dés ----   -->
           <div class="center-control" id="dice">
@@ -26,6 +34,7 @@
             <div class="dice_face dice_face-5">5</div>
             <div class="dice_face dice_face-6">6</div>
           </div>
+          <div class=shadowDice></div>
         </div>
         <button id="rollDiceBtn" class="center-control">
           <div class="btn effectBtn" data-sm-link-text="Roll Dice" target="_blank"><span>Roll Dice</span></div>
@@ -44,21 +53,21 @@
           <!--  ---- Joueur 1 ----   -->
             <div id="player-0-container" class="bg-active-player">
                 <div id="player-name-0"><h1>player 1</h1></div>
-                <div id="turn"></div>
-                <div id="scoreTotal-0"><h2>43</h2></div>
-                <div id="roundScoreArea">
+                <div class="turn"></div>
+                <h2 id="scoreTotal-0">43</h2>
+                <div class="roundScoreContainer">
                   <div>Round score</div>
-                  <div id="roundScore-0"><h3>4</h3></div>
+                  <h3 id="roundScore-0">4</h3>
                 </div>
             </div>
           <!--  ---- Joueur 2 ----   -->
             <div id="player-1-container">
                 <div id="player-name-1"><h1>player 2</h1></div>
-                <div id="turn"></div>
-                <div id="scoreTotal-1"><h2>72</h2></div>
-                <div id="roundScoreArea">
+                <div class="turn"></div>
+                <h2 id="scoreTotal-1">72</h2>
+                <div class="roundScoreContainer">
                   <div>Round score</div>
-                  <div id="roundScore-1"><h3>2</h3></div>
+                  <h3 id="roundScore-1">2</h3>
                 </div>
             </div>
         </div>
