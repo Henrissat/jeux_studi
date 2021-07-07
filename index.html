@@ -39,22 +39,29 @@
         <button id="holdBtn" class="center-control">
           <div class="btn effectBtn"  data-sm-link-text="Hold"  target="_blank"><span>Hold</span></div>
         </button>
+        <audio id="holdSong" src="cash2.wav" type="audio/mp3"></audio>
         <div id="container-player">
           <!--  ---- Joueur 1 ----   -->
             <div id="player-0-container" class="bg-active-player">
-                <div id="player-name">player 1</div>
+                <div id="player-name-0"><h1>player 1</h1></div>
                 <div id="turn"></div>
-                <div id="scoreTotal-0">43</div>
-                <div id="roundScore-0"></div>
+                <div id="scoreTotal-0"><h2>43</h2></div>
+                <div id="roundScoreArea">
+                  <div>Round score</div>
+                  <div id="roundScore-0"><h3>4</h3></div>
+                </div>
             </div>
           <!--  ---- Joueur 2 ----   -->
             <div id="player-1-container">
-                <div id="player-name">player 2</div>
+                <div id="player-name-1"><h1>player 2</h1></div>
                 <div id="turn"></div>
-                <div id="scoreTotal-1">72</div>
-                <div id="roundScore-1">2</div>
+                <div id="scoreTotal-1"><h2>72</h2></div>
+                <div id="roundScoreArea">
+                  <div>Round score</div>
+                  <div id="roundScore-1"><h3>2</h3></div>
+                </div>
             </div>
-        </div> 
+        </div>
     </container>
     <script src="script.js"></script>
   </body>
