@@ -4,29 +4,133 @@
     font-weight: 300;
     font-size: 22px;
     color: rgb(82, 82, 82);
+    font-weight: 600;
     padding: 0;
     margin:0;
 }
   
 body, html{
     font-family: 'lato', sans-serif;
-    color: rgb(109, 109, 109);
+    color: rgb(222, 223, 164);
     font-weight: normal;
 }
 body{
-    background: center no-repeat url(images/bg_game.jpg) ;
+    background: center repeat url(images/bg_game.jpg) ;
     background-position: top;
 }
-.game{
+canvas{
+    position: absolute;
+    transform: rotate(30deg);
+    width: 200%;
+    height: 200%;
+    top:-200px;
+    left:-500px
+}
+#bgEffets{
+}
+#containerGame{
     position: relative;
     display: grid;
     width: 80%;
-    height: 800px;
+    height: 850px;
     margin: 0 auto;
-    margin-top: 10rem;
+    margin-top: 11rem;
     background-color: #f0ffff;
     border-radius: 10px;
     z-index: 0;
+    box-shadow: 10px 10px 30px 30px rgba(0, 0, 0, 0.30);
+}
+.gameFrame{
+    border-radius: 10px;
+    z-index:-50;
+}
+.game{
+    width:88%;
+    height: 91%; 
+    display: grid;
+    margin: 0 auto;
+    vertical-align: middle;
+    background: url(images/bg6.jpg)rgb(20, 20, 20);
+    background-size: 100%;
+    border-radius: 10px;
+    /*margin-bottom:120px;*/
+    border-radius: 10px;
+    z-index: 0;
+    color: rgba(255, 236, 183, 0.8);
+}
+#cadre{
+    position: absolute;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 326px 1fr 326px;
+    grid-template-rows: 128px 1fr 128px;
+    grid-template-areas: 
+        "topLeft top topRight"
+        "left . right"
+        "bottomLeft bottom bottomRight";
+    background-color: rgb(27, 27, 26);
+    z-index: -50;
+    border-radius: 5px;
+    border: solid 5px #2a2a2a;
+}
+#cadre > .cornerCadre-top-left{
+    grid-area: topLeft;
+    background: no-repeat url(images/corner-top-left.png);
+    background-position: top;
+    width: 326px;
+    height: 128px;
+}
+#cadre > .cornerCadre-top-center{
+    grid-area: top;
+    background: repeat-x url(images/cadre-top.png) ;
+    background-position: top;
+    margin-top: 2px;
+    width: 100%;
+    height: 128px;
+}
+#cadre > .cornerCadre-top-right{
+    grid-area: topRight;
+    background: no-repeat url(images/corner-top-right.png) ;
+    background-position: top right;
+    margin-top: 0.5px;
+    width: 326px;
+    height: 128px;
+}
+#cadre > .cornerCadre-left{
+    grid-area: left;
+    background: repeat-y url(images/cadre-left.png) ;
+    background-position: center left;
+    height: 100%;
+}
+#cadre > .cornerCadre-right{
+    grid-area: right;
+    background: repeat-y url(images/cadre-right.png) ;
+    background-position: center right;
+    margin-top: 1px;
+    height: 100%;
+}
+#cadre > .cornerCadre-bottom-left{
+    grid-area: bottomLeft;
+    background: no-repeat url(images/corner-bottom-left.png) ;
+    background-position: left bottom;
+    width: 326px;
+    height: 128px;
+}
+#cadre > .cornerCadre-bottom-center{
+    grid-area: bottom;
+    background: repeat-x url(images/cadre-top.png) ;
+    background-position: bottom center;
+    height: 128px;
+    width: 100%;
+}
+#cadre > .cornerCadre-bottom-right{
+    grid-area: bottomRight;
+    background: no-repeat url(images/corner-bottom-right.png) ;
+    background-position: bottom right;
+    margin-top: 1px;
+    width: 326px;
+    height: 128px;
 }
 .center-control{
     position: absolute;
@@ -70,34 +174,56 @@ h3{
     margin-top: 0.8rem;
 }
 .roundScoreContainer{
-    top: 4rem;
+    top: 1.5rem;
     position: relative;
     margin: 0 auto;
     width: 300px;
-    height: 150px;
+    height: 250px;
     padding: 1.5rem;
+    padding-top: 2.5rem;
     border-radius: 10px;
-    background-color: #f0ffff;
-    box-shadow:0px 2px 4px rgba(0, 0, 0, 0.5); ;
-
+    filter: drop-shadow(10px 10px 4px rgba(0,0,0,0.5));
+    background: url(images/player1-scrore.png);
+    background-position: top;
+    background-size: 100%;
+}
+[id|=scoreTotal] {
+    color: rgb(175, 164, 144);
+}
+h1[id|=player] {
+    color: rgb(175, 164, 144);
+}
+.txtScore{
+    font-size: 1.3em;
+    line-height: 1em;
+    color: rgb(255, 240, 211);
+    text-shadow: 1px 1px 2px rgba(39, 39, 39, 0.8);
 }
 .scene{
-    display: flex;/* pour faire bouger le dés dans la scène*/
+    display: flex; /*pour faire bouger le dés dans la scène en fonction de shadowDice position:relative*/
     position: absolute;
     left: 43%;
     top: 24%;
     width: 200px;
     height: 200px;
-
-    perspective:600px;
+    perspective: 600px;
 }
 .shadowDice{
-    z-index: -10;
-    width:200px;
-    height: 200px;
-    background-color: rgba(44, 44, 44,0.2);
+    position: absolute;
+    width:220px;
+    height: 220px;
+    padding-left: -270px;
+    background-color: rgba(0, 0, 0, 0.9);
     -webkit-filter: blur(30px);
 }
+/*.lightDice{
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    padding-left: -250px;
+    background-color: rgba(255, 128, 0, 0.6);
+    -webkit-filter: blur(30px);
+}*/
 #dice{
     /*margin-top: 10rem;
     background-color: #000;*/
@@ -116,54 +242,54 @@ h3{
     height: 200px;
     border: 4px solid #fff;
     line-height: 200px;
-    font-size: 40px;
+    font-size: 0px;
     font-weight: bold;
     color: #000;
     text-align: center;
   }
 .dice_face-1{
-    background: #fff;  
-    opacity: 0.75;
+    opacity: 0.95;
 }
 .dice_face-3{
-    background: #fff;  
-    opacity: 0.75; 
+    opacity: 0.95; 
 }
 .dice_face-2{ 
-    background: #fff;  
-    opacity: 0.75;
+    opacity: 0.95;
 }
 .dice_face-4{ 
-    background: #fff;  
-    opacity: 0.75;
+    opacity: 0.95;
 }
 .dice_face-5{ 
-    background: #fff;  
-    opacity: 0.75;
+    opacity: 0.95;
 }
 .dice_face-6{ 
-    background: #fff;  
-    opacity: 0.75;
+    opacity: 0.95;
 }
 
 /* Rotation Y sur toutes les faces */
 .dice_face-1{ 
     transform: rotateY(0) translateZ(100px); 
+    background: url(images/dice1.jpg) #fff;  
 }
 .dice_face-2{ 
     transform: rotateY(180deg) translateZ(100px); 
+    background: url(images/dice2.jpg) ;  
 }
 .dice_face-3{ 
     transform: rotateY( 90deg) translateZ(100px); 
+    background: url(images/dice3.jpg) #fff;  
 }
 .dice_face-4{ 
-    transform: rotateY(-90deg) translateZ(100px); 
+    transform: rotateY(-90deg) translateZ(100px);
+    background: url(images/dice4.jpg) #fff;   
 }
 .dice_face-5{ 
     transform: rotateX( 90deg) translateZ(100px); 
+    background: url(images/dice5.jpg) #fff;  
 }
 .dice_face-6{ 
     transform: rotateX(-90deg) translateZ(100px); 
+    background: url(images/dice6.jpg) #fff;  
 }
 /* Rotation X sur toutes les faces */
 #dice.show-1 { 
@@ -174,6 +300,7 @@ h3{
 }
 #dice.show-3 { 
     transform: translateZ(-100px) rotateY(-90deg); 
+  
 }
 #dice.show-4 { 
     transform: translateZ(-100px) rotateY(90deg); 
@@ -281,36 +408,63 @@ buttons{
 
 
 /* ----- Bg change en fonction de joueur actif  ----- */
-[id|=player] {
-    text-align: center;
-}
+
 h3[id|=roundScore] {
-    font-size: 1.3rem;
-    font-weight: 400;
+    color: rgb(255, 240, 211);
+    font-size: 1.8rem;
+    font-weight: 900;
+    line-height: 0.8em;
+    text-shadow: 1px 1px 2px rgba(39, 39, 39, 0.3), 0 0 1em rgb(14, 14, 14), 0 0 0.2em rgb(27, 27, 27);
 }
 
 .bg-active-player{
-    background : linear-gradient(rgb(255, 153, 135), rgb(246, 83, 77));
+    z-index: -20;
+    background : linear-gradient(rgba(224, 137, 55, 0.80), rgba(100, 31, 29, 0.80));
 }
-.bg-active-player > .roundScoreContainer > [id^="roundScore"]{
-    font-size: 1.6em;
-    font-weight: 600;
-    color: rgba(235, 125, 111, 1);
-}
-.bg-active-player > h3{
-    color: #000;
+.bg-active-player > .roundScoreContainer > [id^="roundScore"]{ /* sélecteur va chercher tous les id commençant par roundscore*/
+    font-size: 2.6em;
+    line-height: 0.6em;
+    color: rgb(0, 0, 0);
+    text-shadow: 1px 1px 2px rgba(255, 247, 239, 0.3), 0 0 1em rgb(255, 255, 242), 0 0 0.2em rgb(255, 248, 223);
 }
 .bg-active-player > #scoreTotal-0{
     color: #fff;
-    text-shadow: 0px 3px 7px rgba(0, 0, 0, 0.18);
+    text-shadow: 1px 1px 2px rgba(255, 247, 239, 0.3), 0 0 1em rgb(255, 255, 242), 0 0 0.2em rgb(255, 248, 223);
 }
 .bg-active-player > #scoreTotal-1{
     color: #fff;
-    text-shadow: 0px 3px 7px rgba(0, 0, 0, 0.18);
+    text-shadow: 1px 1px 2px rgba(255, 247, 239, 0.3), 0 0 1em rgb(255, 255, 242), 0 0 0.2em rgb(255, 248, 223);
 }
-.bg-active-player > #roundScore{
+.bg-active-player > .roundScoreContainer > [class|="txtScore"]{
+    color: rgb(0, 0, 0);
+    text-shadow: 1px 1px 2px rgba(255, 247, 239, 0.3), 0 0 1em rgb(255, 255, 242), 0 0 0.2em rgb(255, 248, 223);
+}
+.bg-active-player > h1 { 
     color: #fff;
-    text-shadow: 0px 3px 7px rgba(0, 0, 0, 0.18);
+    text-align: center;
 }
 
-
+#caractereAvatar-0{
+    position: absolute;
+}
+#caractereAvatar-1{
+    position: absolute;
+}
+.bg-active-player > #caractereAvatar-0{
+    z-index: -10;
+    position: absolute;
+    background: url(images/warrior1.png) top right;
+    left: 0px;
+    bottom: 0px;
+    width: 300px;
+    height: 800px;
+}
+.bg-active-player > #caractereAvatar-1{
+    z-index: -10;
+    position: absolute;
+    background: url(images/demon4.png) center;
+    right: 0px;
+    bottom: 0px;
+    width: 300px;
+    height: 800px;
+}

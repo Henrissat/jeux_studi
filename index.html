@@ -13,65 +13,86 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <container class='game'>
-        <audio autoplay id="soundGame" src="on-hells-horizon.mp3" type="audio/mp3"></audio>
-        <button class="center-control" id="newGame">
-          <audio id="ngSong" >
-            <source id="newGameSongs" src="" type="audio/mp3"/>
+    <button id="soundGameCut">sound off</button>
+    <canvas id="bgEffects"></canvas>
+    <container id="containerGame">
+      <div class='gameFrame'>
+        <div id="cadre">
+          <div class="cornerCadre-top-left"></div>
+          <div class="cornerCadre-top-center"></div>
+          <div class="cornerCadre-top-right"></div>
+          <div class="cornerCadre-left"></div>
+          <div class="cornerCadre-right"></div>
+          <div class="cornerCadre-bottom-left"></div>
+          <div class="cornerCadre-bottom-center"></div>
+          <div class="cornerCadre-bottom-right"></div>
+        </div>
+      </div>
+      <div class='game'>
+          <audio autoplay id="soundGame" src="on-hells-horizon.mp3" type="audio/mp3"></audio>
+          <button class="center-control" id="newGame">
+            <audio id="ngSong" >
+              <source id="newGameSongs" src="" type="audio/mp3"/>
+              Your browser does not support the audio element.
+            </audio>
+            <div class="btn effectBtn"  data-sm-link-text="newGame">
+              <span>New game</span>
+            </div>
+          </button>
+          <div class="scene">
+            <!--  ---- Création du dés ----   -->
+            <div class="center-control" id="dice">
+              <div class="dice_face dice_face-1">1</div>
+              <div class="dice_face dice_face-2">2</div>
+              <div class="dice_face dice_face-3">3</div>
+              <div class="dice_face dice_face-4">4</div>
+              <div class="dice_face dice_face-5">5</div>
+              <div class="dice_face dice_face-6">6</div>
+            </div>
+            <div class=shadowDice></div>
+            <!--<div class=lightDice></div>-->
+          </div>
+          <button id="rollDiceBtn" class="center-control">
+            <div class="btn effectBtn" data-sm-link-text="Roll Dice" target="_blank"><span>Roll Dice</span></div>
+          </button>
+          <audio id="rollSong1" src="roll.wav" type="audio/mp3"></audio>
+          <audio id="rollSong2" src="https://sounds-mp3.com/mp3/0004526.mp3" type="audio/mp3"></audio>
+          <audio id="overSong" >
+            <source id="sourceSongLaugh" src="" type="audio/mp3"/>
             Your browser does not support the audio element.
           </audio>
-          <div class="btn effectBtn"  data-sm-link-text="newGame">
-            <span>New game</span>
-          </div>
-        </button>
-        <div class="scene">
-          <!--  ---- Création du dés ----   -->
-          <div class="center-control" id="dice">
-            <div class="dice_face dice_face-1">1</div>
-            <div class="dice_face dice_face-2">2</div>
-            <div class="dice_face dice_face-3">3</div>
-            <div class="dice_face dice_face-4">4</div>
-            <div class="dice_face dice_face-5">5</div>
-            <div class="dice_face dice_face-6">6</div>
-          </div>
-          <div class=shadowDice></div>
-        </div>
-        <button id="rollDiceBtn" class="center-control">
-          <div class="btn effectBtn" data-sm-link-text="Roll Dice" target="_blank"><span>Roll Dice</span></div>
-        </button>
-        <audio id="rollSong1" src="roll.wav" type="audio/mp3"></audio>
-        <audio id="rollSong2" src="https://sounds-mp3.com/mp3/0004526.mp3" type="audio/mp3"></audio>
-        <audio id="overSong" >
-          <source id="sourceSongLaugh" src="" type="audio/mp3"/>
-          Your browser does not support the audio element.
-        </audio>
-        <button id="holdBtn" class="center-control">
-          <div class="btn effectBtn"  data-sm-link-text="Hold"  target="_blank"><span>Hold</span></div>
-        </button>
-        <audio id="holdSong" src="cash2.wav" type="audio/mp3"></audio>
-        <div id="container-player">
-          <!--  ---- Joueur 1 ----   -->
-            <div id="player-0-container" class="bg-active-player">
-                <div id="player-name-0"><h1>player 1</h1></div>
-                <div class="turn"></div>
-                <h2 id="scoreTotal-0">43</h2>
-                <div class="roundScoreContainer">
-                  <div>Round score</div>
-                  <h3 id="roundScore-0">4</h3>
+          <button id="holdBtn" class="center-control">
+            <div class="btn effectBtn"  data-sm-link-text="Hold"  target="_blank"><span>Hold</span></div>
+          </button>
+          <audio id="holdSong" src="cash2.wav" type="audio/mp3"></audio>
+          <div id="container-player">
+              <!-- ---- Joueur 1 ----   -->
+                <div id="player-0-container" class="bg-active-player">
+                    <div id="caractereAvatar-0">
+                    </div>
+                    <h1 id="player-name-0">Player 1</h1>
+                    <div class="turn"></div>
+                    <h2 id="scoreTotal-0">43</h2>
+                    <div class="roundScoreContainer">
+                      <div class="txtScore">Round score</div>
+                      <h3 id="roundScore-0">4</h3>
+                    </div>
                 </div>
-            </div>
-          <!--  ---- Joueur 2 ----   -->
-            <div id="player-1-container">
-                <div id="player-name-1"><h1>player 2</h1></div>
-                <div class="turn"></div>
-                <h2 id="scoreTotal-1">72</h2>
-                <div class="roundScoreContainer">
-                  <div>Round score</div>
-                  <h3 id="roundScore-1">2</h3>
+              <!--  ---- Joueur 2 ----   -->
+                <div id="player-1-container">
+                    <div id="caractereAvatar-1">
+                    </div>
+                    <h1 id="player-name-1">Player 2</h1>
+                    <div class="turn"></div>
+                    <h2 id="scoreTotal-1">72</h2>
+                    <div class="roundScoreContainer">
+                      <div class="txtScore">Round score</div>
+                      <h3 id="roundScore-1">2</h3>
+                    </div>
                 </div>
-            </div>
+          </div>
         </div>
-    </container>
+      </container>
     <script src="script.js"></script>
   </body>
 </html>
