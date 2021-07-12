@@ -12,7 +12,12 @@ players = [ player1, player2 ]*/
 var soundGame = document.getElementById('soundGame')
 soundGame.volume = 0.30
 document.getElementById('soundGameCut').addEventListener("click", ()=>{
-  soundGame.pause()
+  if (soundGame.paused) {
+    soundGame.play();
+}
+else {
+  soundGame.pause();
+}
 })
 
 /* new game */
@@ -134,7 +139,11 @@ function winner(){
     window.alert('YOU WIN')
   }
 }
-/*  -----  EFFETS  -----  */
+
+
+
+/*  -----------------  EFFETS  --------------------  */
+
 /*function songByPlayer(){
   if (playerActive = 0 ){
     document.getElementById('rollSong1').play()
@@ -248,53 +257,54 @@ function dice5(){
 */
 
 
-/* ---- Background effets brazier  ---- */
+/* ---- Background effets brazier  ----*/
+
 (function(){
-	
-	var c = document.getElementById("bgEffects"),
-			ctx = c.getContext("2d");
-	
-	c.width = innerWidth;
-	c.height = innerHeight;
-	
+	//Canvas
+	var canvas = document.getElementById("bgEffects"),
+			ctx = canvas.getContext("2d")
+  ctx.rotate(45 * Math.PI / 45)
+	canvas.width = window.innerWidth
+	canvas.height = window.innerHeight
+
+  // creation, espacement et vitesse alétoire	
 	var lines = [],
-			maxSpeed = 5,
+			maxSpeed = 3,
 			spacing = 5,
 			xSpacing = 0,
 			n = innerWidth / spacing,
 			colors = ["rgba(224, 137, 55, 0.)", "rgba(240, 89, 44, 0.4)", "rgba(255, 206, 73, 0.3)", "rgba(255, 236, 183, 0.2)"],
-			i;
-	
+			i
+	// dessiner mes lignes
 	for (i = 0; i < n; i++){
-		xSpacing += spacing;
+		xSpacing += spacing
 		lines.push({
 			x: xSpacing,
-			y: Math.round(Math.random()*c.height),
-			width: 2,
-			height: Math.round(Math.random()*(innerHeight/10)),
+			y: Math.round(Math.random()*canvas.height),
+			width: 1.3,
+			height: Math.round(Math.random()*(innerHeight/30)),
 			speed: Math.random()*maxSpeed + 3,
 			color: colors[Math.floor(Math.random() * colors.length)]
-		});
+		})
 	}
-	
 	
 	function draw(){
 		var i;
-		ctx.clearRect(0,0,c.width,c.height);
+		ctx.clearRect(0,0,canvas.width,canvas.height)
 		
 		for (i = 0; i < n; i++){
-			ctx.fillStyle = lines[i].color;
-			ctx.fillRect(lines[i].x, lines[i].y, lines[i].width, lines[i].height);
+			ctx.fillStyle = lines[i].color
+			ctx.fillRect(lines[i].x, lines[i].y, lines[i].width, lines[i].height)
 			lines[i].y += lines[i].speed;
 			
-			if (lines[i].y > c.height)
-				lines[i].y = 0 - lines[i].height;
+			if (lines[i].y > canvas.height)
+				lines[i].y = 0 - lines[i].height
 		}
 		
-		requestAnimationFrame(draw);
+		requestAnimationFrame(draw)
 		
 	}
 	
-	draw();
+	draw()
 	
-}());
+}())
