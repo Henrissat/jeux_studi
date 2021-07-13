@@ -69,7 +69,6 @@ canvas{
     background-size: 100%;
     border-radius: 10px;
     /*margin-bottom:120px;*/
-    border-radius: 10px;
     z-index: 0;
     color: rgba(255, 236, 183, 0.8);
 }
@@ -196,7 +195,6 @@ h3{
     height: 250px;
     padding: 1.5rem;
     padding-top: 2.5rem;
-    border-radius: 10px;
     filter: drop-shadow(10px 10px 4px rgba(0,0,0,0.5));
     background: url(images/player1-scrore.png);
     background-position: top;
@@ -504,16 +502,10 @@ h3[id|=roundScore] {
         z-index:-50;
     }
     .game{
-        width:88%;
+        width:100%;
         height: 91%; 
-        display: flex;
-        margin: 0 auto;
-        vertical-align: middle;
-        background: #161616;
         background-size: 100%;
-        border-radius: 10px;
-        /*margin-bottom:120px;*/
-        border-radius: 10px;
+        border-radius: 0;
         z-index: 0;
         color: rgba(255, 236, 183, 0.8);
     }
@@ -522,44 +514,51 @@ h3[id|=roundScore] {
     }
     #containerGame{
         position: absolute;
-        display: flex;
+        display:flex;
         width: 100%;
         height: 100%;
-        margin: 0 auto;
+        margin: 0;
         margin-top: 6rem;
         background-color: #161616;
-        border-radius: 10px;
+        border-radius: 0;
         z-index: 0;
         box-shadow: 10px 10px 30px 30px rgba(0, 0, 0, 0.30);
     }
     #container-player{
-        display:block;
-
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 40%);
     }
     #player-0-container{
+        grid-row: 1;
+        grid-column: none;
         display: flex;
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
         text-align: center;
-        margin: 0;
-        padding: 0;
+        width: 100%;
     }
     #player-1-container{
+        grid-row: 2;
+        grid-column: none;
         display: flex;
         text-align: center;
+        padding-top: 1rem;
+        margin-top: 5.5rem;
+    }
+    .bg-active-player{
         margin: 0;
         padding: 0;
-        margin-top: 10rem;
+        width: 100%;
+        height: 100%;
     }
     .roundScoreContainer{
-        top: 2.5rem;
+        top: 0;
         position: relative;
-        margin: 0 auto;
         width: 50%;
         height: 150px;
         padding: 1.5rem;
         padding-top: 1rem;
-        border-radius: 10px;
         filter: drop-shadow(10px 10px 4px rgba(0,0,0,0.5));
         background: url(images/player1-scrore.png);
         background-position: top;
@@ -579,20 +578,22 @@ h3[id|=roundScore] {
         display: flex; /*pour faire bouger le dés dans la scène en fonction de shadowDice position:relative*/
         position: absolute;
         left: 23%;
-        top: 30%;
+        top: 25%;
         width: 200px;
         height: 200px;
         perspective: 600px;
+        z-index: 200;
     }
     h1{
-        margin-top: 3rem;
+        margin-top: 0;
         font-size: 1rem;
         text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.20);
     }
     
     h2{
-        margin-top: 4rem;
+        margin-top:1rem;
         font-family: 'Staatliches', cursive;
+        margin-left: -3rem;
         font-size: 4rem;
         text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
     }
@@ -609,6 +610,7 @@ h3[id|=roundScore] {
         border-radius: 0;
         box-shadow: none;
         border: 1px solid #fff;
+        background-color: rgb(245, 245, 245);
     }
     #holdBtn{
         position: fixed;
@@ -619,6 +621,7 @@ h3[id|=roundScore] {
         max-width: 100%;
         border-radius: 0;
         border: 1px solid #fff;
+        background-color: rgb(245, 245, 245);
     }
     #newGame{
         margin-top: 0;
@@ -629,6 +632,7 @@ h3[id|=roundScore] {
         border-radius: 0;
         box-shadow: none;
         border: 1px solid #fff;
+        background-color: rgb(245, 245, 245);
     } 
     .btn {
         letter-spacing: 0.1em;
@@ -638,6 +642,7 @@ h3[id|=roundScore] {
         text-transform: uppercase;
         border-radius: 50px;
         padding: 10px;
+        background-color: rgb(245, 245, 245);
     }
     .center-control{
         position: fixed;
@@ -647,5 +652,28 @@ h3[id|=roundScore] {
         margin-top: 0;
         padding:0;
         z-index: 25;
+    }
+    .bg-active-player > #caractereAvatar-0{
+        background: url(images/warrior1.png) top right no-repeat;
+        background-size:cover;
+        left: 0px;
+        bottom: 0px;
+        width: 180px;
+        height: 600px;
+    }
+    .bg-active-player > #caractereAvatar-1{
+        z-index: -10;
+        position: absolute;
+        background: url(images/demon4b.png) top right no-repeat;
+        background-size:cover;
+        left:0px;
+        bottom: 0px;
+        width: 280px;
+        height: 600px;
+    }
+    .shadowDice{
+        display: none;
+        width: 0;
+        height: 0;
     }
 }
